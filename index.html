@@ -39,6 +39,34 @@
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
+
+  <style>
+    .paper-title {
+      font-size: 56px;
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.35rem;
+    }
+    .cool-word {
+      display: inline-block;
+      padding: 0 2px;
+      -webkit-text-stroke: 3px rgba(0,0,0,0.08);
+      text-shadow:
+        3px 3px 0 rgba(255, 0, 0, 0.65),
+       -3px 0 0 rgba(0, 180, 255, 0.75),
+        0 -3px 0 rgba(70, 220, 120, 0.65);
+    }
+    .c-gray { color: #8e8e8e; }
+    .c-yellow { color: #f4d03f; }
+    .c-orange { color: #e67e22; }
+    .c-purple { color: #8e44ad; }
+    .c-green { color: #2ecc71; }
+    @media (max-width: 768px) {
+      .paper-title { font-size: 36px; }
+    }
+  </style>
+
 </head>
 <body id="top">
 
@@ -61,7 +89,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Diffusion-Based Low-Light Image Enhancement<br>with Color and Luminance Priors</h1>
+          <h1 class="title is-1 publication-title paper-title"><span class="cool-word">Diffusion<span class="c-yellow">-</span>Based</span> <span class="c-gray">Low-Light</span> Image Enhancement<br>with <span class="c-orange">Color</span> and <span class="c-green">Luminance</span> Priors</h1>
           <div class="is-size-5 publication-authors">
   <span class="author-block">Xuanshuo Fu</sup>,</span>
   <span class="author-block">Lei Kang</sup><span style="font-size: 0.9em;">†</span>,</span>
@@ -116,18 +144,6 @@
   </div>
 </section>
 
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <figure class="image">
-        <img src="./static/images/net.png" alt="SCEM-equipped diffusion framework overview">
-      </figure>
-      <h2 class="subtitle has-text-centered">
-        Overview of our SCEM-equipped conditional diffusion framework for low-light image enhancement.
-      </h2>
-    </div>
-  </div>
-</section>
 
 <section class="section">
   <div class="container is-max-desktop">
@@ -140,46 +156,36 @@
             Low-light images often suffer from low contrast, noise, and color distortion, degrading visual quality and impairing downstream vision tasks. We propose a conditional diffusion framework for low-light image enhancement that incorporates a Structured Control Embedding Module (SCEM). SCEM decomposes a low-light image into four informative components—illumination, illumination-invariant features, shadow priors, and color-invariant cues—which serve as control signals to condition a U-Net–based diffusion model trained with a simplified noise-prediction loss. The resulting SCEM-equipped diffusion method enforces structured enhancement guided by physical priors. Our model is trained only on LOLv1 and evaluated without fine-tuning on LOLv2-real, LSRW, DICM, MEF, and LIME, achieving state-of-the-art quantitative and perceptual metrics and strong cross-dataset generalization. Code will be released upon acceptance.
           </p>
         </div>
+
+<h3 class="title is-4">Fig. 1: Quantitative comparisons</h3>
+<div class="columns is-vcentered">
+  <div class="column">
+    <figure class="image">
+      <img src="./static/images/Table1Radarchart_gai.png" alt="Fig.1(a) radar chart on LOLv1/LOLv2-real/LSRW (with GT)" style="display:block; max-width:100%; height:auto;">
+    </figure>
+    <p class="has-text-centered is-size-7">(a) PSNR/SSIM/LPIPS/FID on LOLv1, LOLv2-real, and LSRW (with ground truth).</p>
+  </div>
+  <div class="column">
+    <figure class="image">
+      <img src="./static/images/Table3Radarchart_gai.png" alt="Fig.1(b) radar chart on DICM/MEF/LIME (no GT)" style="display:block; max-width:100%; height:auto;">
+    </figure>
+    <p class="has-text-centered is-size-7">(b) NIQE/BRISQUE/PI on DICM, MEF, and LIME (no ground truth).</p>
+  </div>
+</div>
+<div class="content has-text-justified" style="margin-top: 0.75rem;">
+  <p>
+    Fig. 1 reports both <strong>fidelity</strong> metrics (PSNR/SSIM) and <strong>perceptual</strong> metrics (LPIPS/FID, NIQE/BRISQUE/PI)
+    across datasets with and without ground truth. Our SCEM-equipped diffusion model remains consistently strong across all axes,
+    highlighting robust generalization beyond the training distribution.
+  </p>
+</div>
       </div>
     </div>
     <!--/ Abstract. -->
 
-<!-- Figures. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Figures</h2>
 
-        <h3 class="title is-4">Fig. 1: Quantitative comparisons</h3>
-        <div class="columns is-vcentered">
-          <div class="column">
-            <figure class="image">
-              <img src="./static/images/Table1Radarchart_gai.png" alt="Fig.1(a) radar chart on LOLv1/LOLv2-real/LSRW (with GT)">
-            </figure>
-            <p class="has-text-centered is-size-7">(a) PSNR/SSIM/LPIPS/FID on LOLv1, LOLv2-real, and LSRW (with ground truth).</p>
-          </div>
-          <div class="column">
-            <figure class="image">
-              <img src="./static/images/Table3Radarchart_gai.png" alt="Fig.1(b) radar chart on DICM/MEF/LIME (no GT)">
-            </figure>
-            <p class="has-text-centered is-size-7">(b) NIQE/BRISQUE/PI on DICM, MEF, and LIME (no ground truth).</p>
-          </div>
-        </div>
-
-        <h3 class="title is-4">Fig. 2: Structured Control Embedding Module (SCEM)</h3>
-        <figure class="image">
-          <img src="./static/images/net.png" alt="Fig.2 SCEM module and diffusion pipeline">
-        </figure>
-        <p class="has-text-centered is-size-7">
-          SCEM decomposes a low-light image into illumination, illumination-invariant features, shadow priors, and color-invariant cues to condition the diffusion model.
-        </p>
-
-        <h3 class="title is-4">Fig. 3: Qualitative comparison</h3>
-        <figure class="image">
-          <img src="./static/images/comper.png" alt="Fig.3 qualitative comparisons">
-        </figure>
-      </div>
-    </div>
-    <!--/ Figures. -->
+  </div>
+</section>
 
 <section class="section" id="method">
   <div class="container is-max-desktop">
@@ -193,6 +199,14 @@
             (3) shadow priors, and (4) color-invariant cues. These priors provide physically meaningful guidance during denoising, enabling
             robust enhancement under complex lighting and color shifts.
           </p>
+
+<h3 class="title is-4" style="margin-top: 1.25rem;">Fig. 2: Structured Control Embedding Module (SCEM)</h3>
+<figure class="image" style="margin-top: 0.5rem;">
+  <img src="./static/images/net.png" alt="Fig.2 SCEM module and diffusion pipeline" style="display:block; max-width:100%; height:auto;">
+</figure>
+<p class="has-text-centered is-size-7" style="margin-top: 0.5rem;">
+  SCEM decomposes a low-light image into illumination, illumination-invariant features, shadow priors, and color-invariant cues to condition the diffusion model.
+</p>
           <p>
             Fig. 2 illustrates the overall pipeline: the SCEM controls are concatenated and injected into the diffusion model to steer the
             enhancement process with a simplified noise-prediction objective.
@@ -216,6 +230,11 @@
             demonstrating strong cross-dataset generalization.
           </p>
         </div>
+        <h3 class="title is-4" style="margin-top: 1.25rem;">Fig. 3: Qualitative comparison</h3>
+        <figure class="image" style="margin-top: 0.5rem;">
+          <img src="./static/images/comper.png" alt="Fig.3 qualitative comparisons">
+        </figure>
+
       </div>
     </div>
   </div>
